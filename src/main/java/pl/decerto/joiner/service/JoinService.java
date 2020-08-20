@@ -16,7 +16,6 @@ public class JoinService {
         //@FIXME ADD VISITOR DESIGN PATTERN
 
 
-
         if (joinMethod.equals(JoinMethod.ADDITION)) {
             IntegerrListJointer integerrListJointer = new IntegerrListJointer();
             return integerrListJointer.join(integerlistMap, new IntegerAdditionElementJoiner());
