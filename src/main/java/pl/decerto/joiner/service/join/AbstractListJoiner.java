@@ -14,6 +14,14 @@ public abstract class AbstractListJoiner<Chunk> implements ListJoiner<Chunk> {
         List<List<Chunk>> chunkListOfLists = new ArrayList<>(chunkMap.values());
         List<Chunk> resultList = new ArrayList<>();
 
+        int size = chunkListOfLists.get(0).size();
+
+        chunkListOfLists.forEach(list -> {
+            if (list.size() != size) {
+                throw new IllegalArgumentException("All lists need to have the same size to join them");
+            }
+        });
+
         Chunk lastElement = null;
         for (int i = 0; i < chunkListOfLists.get(0).size(); i++) {
             List<Chunk> oneRowChunks = new ArrayList<>();
