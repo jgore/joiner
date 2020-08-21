@@ -1,4 +1,6 @@
-package pl.decerto.joiner.service.join;
+package pl.decerto.joiner.service.joiner;
+
+import pl.decerto.joiner.service.joiner.elementJointer.ElementJoiner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +8,27 @@ import java.util.Map;
 
 public abstract class AbstractListJoiner<Chunk> implements ListJoiner<Chunk> {
 
+    private Map<String, List<Chunk>> chunkMap;
+    private List<Chunk> resultList = new ArrayList<>();
+
+    public AbstractListJoiner(Map<String, List<Chunk>> chunkMap) {
+        this.chunkMap = chunkMap;
+    }
 
     @Override
-    public List<Chunk> join(Map<String, List<Chunk>> chunkMap, ElementJoiner<Chunk> elementJoiner) {
+    public List<Chunk> join(ElementJoiner<Chunk> elementJoiner) {
 
+        //@FIXME move to constructor
+        if(elementJoiner == null){
+            throw new IllegalArgumentException("element joiner cannot be null");
+        }
+
+        //@FIXME move to constructor
+        if (chunkMap.size() < 2) {
+            throw new IllegalArgumentException("chunk map be less than 2");
+        }
 
         List<List<Chunk>> chunkListOfLists = new ArrayList<>(chunkMap.values());
-        List<Chunk> resultList = new ArrayList<>();
 
         int size = chunkListOfLists.get(0).size();
 
@@ -36,5 +52,9 @@ public abstract class AbstractListJoiner<Chunk> implements ListJoiner<Chunk> {
         }
 
         return resultList;
+    }
+
+    public List<Chunk> getResultList() {
+        return new ArrayList<>(resultList);
     }
 }
