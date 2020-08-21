@@ -11,14 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-class RandomJavaIntegerJoinerFacadeTest {
+class RandomJavaNumberJoinerFacadeTest {
 
     @Autowired
-    private RandomJavaIntegerJoinerFacade randomJavaIntegerJoinerFacade;
+    private RandomJavaNumberJoinerFacade randomJavaNumberJoinerFacade;
 
     @Test
     void join() {
-        List<Number> joinedList = randomJavaIntegerJoinerFacade.join(NumberAdditionElementJoiner.getInstance());
+        List<Number> joinedList = randomJavaNumberJoinerFacade.join(NumberAdditionElementJoiner.getInstance());
         assertEquals(joinedList.size(), 100);
     }
 }
