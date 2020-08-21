@@ -3,7 +3,7 @@ package pl.decerto.joiner.facade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.decerto.joiner.service.joiner.elementJointer.IntegerAdditionElementJoiner;
+import pl.decerto.joiner.service.joiner.elementJointer.NumberAdditionElementJoiner;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ class RandomJavaIntegerJoinerFacadeTest {
 
     @Test
     void join() {
-        List<Integer> joinedList = randomJavaIntegerJoinerFacade.join(IntegerAdditionElementJoiner.getInstance());
+        List<Number> joinedList = randomJavaIntegerJoinerFacade.join(NumberAdditionElementJoiner.getInstance());
         assertEquals(joinedList.size(), 100);
     }
 }

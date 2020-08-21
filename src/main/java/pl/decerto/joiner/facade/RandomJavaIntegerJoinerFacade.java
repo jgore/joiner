@@ -18,16 +18,16 @@ public class RandomJavaIntegerJoinerFacade {
     @Autowired
     private JoinService joinService;
 
-    public List<Integer> join(ElementJoiner<Integer> elementJoiner) {
+    public List<Number> join(ElementJoiner<Number> elementJoiner) {
 
-        List<Integer> generateList1 = randomIntegerService.generate(100);
-        List<Integer> generateList2 = randomIntegerService.generate(100);
-        List<Integer> generateList3 = randomIntegerService.generate(100);
+        List<Number> generateList1 = randomIntegerService.generate(100);
+        List<Number> generateList2 = randomIntegerService.generate(100);
+        List<Number> generateList3 = randomIntegerService.generate(100);
 
-        HashMap<String, List<Integer>> stringListHashMap = new HashMap<>();
+        HashMap<String, List<Number>> stringListHashMap = new HashMap<>();
         stringListHashMap.put("randomJava1", generateList1);
         stringListHashMap.put("randomJava2", generateList2);
-        stringListHashMap.put("randomJava3", generateList2);
+        stringListHashMap.put("randomJava3", generateList3);
 
         return joinService.join(stringListHashMap, elementJoiner);
 

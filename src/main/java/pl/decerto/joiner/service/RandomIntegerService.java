@@ -11,10 +11,10 @@ import java.util.Random;
 public class RandomIntegerService {
     private Random random = new Random();
 
-    public List<Integer> generate(Integer size) {
-        List<Integer> list = new ArrayList<>();
+    public List<Number> generate(Integer size) {
+        List<Number> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            list.add(random.nextInt(100));
+            list.add(random.nextDouble());
         }
         return list;
     }

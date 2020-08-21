@@ -3,9 +3,9 @@ package pl.decerto.joiner;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pl.decerto.joiner.service.joiner.elementJointer.IntegerAdditionElementJoiner;
+import pl.decerto.joiner.service.joiner.elementJointer.NumberAdditionElementJoiner;
 import pl.decerto.joiner.service.joiner.elementJointer.IntegerSubtractionListJoiner;
-import pl.decerto.joiner.service.joiner.IntegerListJoiner;
+import pl.decerto.joiner.service.joiner.NumberListJoiner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,56 +18,56 @@ public class ListJoinerTest {
 
     @Test()
     public void testOneListJoin(){
-        List<Integer> integerChunksFrom1 = new ArrayList<>();
+        List<Number> integerChunksFrom1 = new ArrayList<>();
         integerChunksFrom1.add(1);
 
-        HashMap<String, List<Integer>> stringListHashMap = new HashMap<>();
+        HashMap<String, List<Number>> stringListHashMap = new HashMap<>();
         stringListHashMap.put("1", integerChunksFrom1);
 
-        IntegerListJoiner integerListJoiner = new IntegerListJoiner(stringListHashMap);
+        NumberListJoiner numberListJoiner = new NumberListJoiner(stringListHashMap);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            integerListJoiner.join(IntegerAdditionElementJoiner.getInstance());
+            numberListJoiner.join(NumberAdditionElementJoiner.getInstance());
         });
     }
 
     @Test
-    public void testAdditionChunksJoin() {
-        List<Integer> integerChunksFrom1 = new ArrayList<>();
-        List<Integer> integerChunksFrom2 = new ArrayList<>();
+    public void testIntegerAdditionChunksJoin() {
+        List<Number> integerChunksFrom1 = new ArrayList<>();
+        List<Number> integerChunksFrom2 = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             integerChunksFrom1.add(i);
             integerChunksFrom2.add(i);
         }
 
-        HashMap<String, List<Integer>> stringListHashMap = new HashMap<>();
+        HashMap<String, List<Number>> stringListHashMap = new HashMap<>();
         stringListHashMap.put("1", integerChunksFrom1);
         stringListHashMap.put("2", integerChunksFrom2);
 
-        IntegerListJoiner integerListJoiner = new IntegerListJoiner(stringListHashMap);
-        List<Integer> joinedList = integerListJoiner.join(IntegerAdditionElementJoiner.getInstance());
+        NumberListJoiner numberListJoiner = new NumberListJoiner(stringListHashMap);
+        List<Number> joinedList = numberListJoiner.join(NumberAdditionElementJoiner.getInstance());
         assertEquals(joinedList.size(), 10);
         assertEquals(joinedList.get(0), 0);
     }
 
     @Test
-    public void testSubtractionChunksJoin() {
+    public void testIntegerSubtractionChunksJoin() {
 
-        List<Integer> integerChunksFrom1 = new ArrayList<>();
-        List<Integer> integerChunksFrom2 = new ArrayList<>();
+        List<Number> integerChunksFrom1 = new ArrayList<>();
+        List<Number> integerChunksFrom2 = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             integerChunksFrom1.add(i);
             integerChunksFrom2.add(i);
         }
 
-        HashMap<String, List<Integer>> stringListHashMap = new HashMap<>();
+        HashMap<String, List<Number>> stringListHashMap = new HashMap<>();
         stringListHashMap.put("1", integerChunksFrom1);
         stringListHashMap.put("2", integerChunksFrom2);
 
-        IntegerListJoiner integerListJoiner = new IntegerListJoiner(stringListHashMap);
-        List<Integer> joinedList = integerListJoiner.join(IntegerSubtractionListJoiner.getInstance());
+        NumberListJoiner numberListJoiner = new NumberListJoiner(stringListHashMap);
+        List<Number> joinedList = numberListJoiner.join(IntegerSubtractionListJoiner.getInstance());
 
         assertEquals(joinedList.size(), 10);
         assertEquals(joinedList.get(0), 0);
