@@ -7,6 +7,7 @@ import pl.decerto.joiner.service.joiner.elementJointer.NumberAdditionElementJoin
 import pl.decerto.joiner.service.joiner.elementJointer.IntegerSubtractionListJoiner;
 import pl.decerto.joiner.service.joiner.NumberListJoiner;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ListJoinerTest {
         NumberListJoiner numberListJoiner = new NumberListJoiner(stringListHashMap);
         List<Number> joinedList = numberListJoiner.join(NumberAdditionElementJoiner.getInstance());
         assertEquals(joinedList.size(), 10);
-        assertEquals(joinedList.get(0), 0);
+        assertEquals(joinedList.get(0), BigDecimal.valueOf(0));
     }
 
     @Test
@@ -70,6 +71,6 @@ public class ListJoinerTest {
         List<Number> joinedList = numberListJoiner.join(IntegerSubtractionListJoiner.getInstance());
 
         assertEquals(joinedList.size(), 10);
-        assertEquals(joinedList.get(0), 0);
+        assertEquals(joinedList.get(0), BigDecimal.valueOf(0));
     }
 }
